@@ -1,0 +1,18 @@
+Para que funcione deben realizar los siguientes pasos:
+
+1.- Instalar NodeJS en sus PCs
+    https://nodejs.org/es/
+    La version Recomendada para la mayoria.
+2.- Instalar MongoDB
+    https://www.mongodb.com/download-center#community
+3.- ejecutar en un CMD desde la ruta donde esta este archivo, el siguiente comando para descargar los complementos requeridos
+    npm install
+4.- Iniciar una instancia de Mongo
+    Ir a la carpeta donde instalamos Mongo, y desde un CMD ejecutar el 'mongod.exe'
+5.- Iniciar la api con el siguiente comando:
+    node index.js
+
+Posibles problemas para ejecutarlo:
+1.- Al intentar ejecutar el 'mongod.exe' del punto 4, es posible que el servidor tire un error. El mismo es por que no pudo crear las carpetas para alojar las colecciones.
+  Para solucionar esto, solo debemos crear las carpetas que nos indica en el mensaje de error.
+  ej: Crear la carpeta 'data' y 'db' desde el raiz del 'C:'.
