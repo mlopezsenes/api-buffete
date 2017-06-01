@@ -30,7 +30,7 @@ MongoClient.connect('mongodb://localhost:27017/buffete', function(err, db) {
 																	   "apellido": "apellido",
 																	   "dni": 99333111,
 																	   "mail": "a@a.com",
-																	   "clave": "clave"
+																	   "clave": "8927bd748f26a7258a01e318a7e1e7585458a228"
 																	 }
 																);
 	db.collection('productos').drop();

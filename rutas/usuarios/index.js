@@ -1,4 +1,6 @@
 ﻿express = require('express');
+var bodyParser = require('body-parser');
+var sha1 = require('sha1');
 var cors = require('cors');
 
 var corsOptions = {
@@ -20,14 +22,16 @@ router.use(cors(corsOptions));
   "apellido": "apellido",
   "dni": 99000111,
   "mail": "a@a.com",
-  "clave": "clave"
+  "clave": "8927bd748f26a7258a01e318a7e1e7585458a228" //la clave es 'clave'
 }
 */
 //3. Alta de un usuario
 router.post('/nuevo',function(req,res){
   console.log(req.body);
+    var usuario = req.body;
+    usuario.clave = sha1(req.body.clave);
     req.db.collection('usuarios')
-    .insert(req.body,function(e){
+    .insert(usuario,function(e){
         if (e)
             console.log(e);
     })
@@ -52,6 +56,26 @@ router.get('/:mail',function(req,res){
     .find({mail:req.params.mail})
     .toArray((err, data) => {
         res.json(data);
+    });
+});
+
+// comparo mail con clave
+router.get('/:mail/:clave',function(req,res){
+    //console.log(req.params.mail);
+    //console.log(req.params.clave);
+      req.db.collection('usuarios')
+    .find({mail:req.params.mail})
+    .toArray((err, data) => {
+      var result = data[0];
+        if (data.length != 0){
+          if (req.params.mail == result.mail && sha1(req.params.clave) == result.clave) {
+            res.json("{'codigo': 200,'mensaje':'Validado'}");  
+          } else {
+            res.json("{'codigo': 400,'mensaje':'mail o clave incorrectos'}")
+          }
+
+          } else { res.json("{'codigo': 500,'mensaje':'mail o clave incorrectos.'}")}
+        
     });
 });
 
