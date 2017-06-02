@@ -13,19 +13,19 @@ router.use(cors(corsOptions));
 /*
 //Estructura menues
 {
-  usuario: mail,
-  pedido: [{tipoMenu: "Snak", // Snak / Principal / Bebida
-            nombre:"Papas Lays 250g",
-            precio: 3,5,
-            imagen: "url imagen"},
-          {tipoMenu: "Snak", // Snak / Principal / Bebida
-            nombre:"Papas Lays 250g",
-            precio: 3,5,
-            imagen: "url imagen"},
-          {tipoMenu: "Snak", // Snak / Principal / Bebida
-              nombre:"Papas Lays 250g",
-              precio: 3,5,
-              imagen: "url imagen"}
+  "usuario": a@a.com,
+  "pedido": [{"tipoMenu": "Snack", 
+            "nombre":"Papas Lays 250g",
+            "precio": 3.5,
+            "imagen": "url imagen"},
+          {"tipoMenu": "Snak", // Snak / Principal / Bebida
+            "nombre":"Papas Lays 250g",
+            "precio": 30.5,
+            "imagen": "url imagen"},
+          {"tipoMenu": "Snak", 
+              "nombre":"Papas Lays 250g",
+              "precio": 3.5,
+              "imagen": "url imagen"}
           ]
 
 }
@@ -41,12 +41,24 @@ router.get('/', function(req,res){
 });
 
 //b.  Devuelve todos los productos del tipo indicado.
-router.get('/pedidos/:mail',function(req,res){
-	    req.db.collection('productos')
+router.get('/:mail',function(req,res){
+	    req.db.collection('pedidos')
     .find({usuario:req.params.mail})
     .toArray((err, data) => {
+      console.log(data);
         res.json(data);
     });
+});
+
+//3. Alta de un pedido
+router.post('/nuevo',function(req,res){
+  console.log(req.body);
+  req.db.collection('pedidos')
+    .insert(req.body,function(e){
+        if (e)
+            console.log(e);
+    })
+    res.send("Se inserto correctamente");
 });
 
 module.exports = router;

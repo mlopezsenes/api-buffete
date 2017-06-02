@@ -13,10 +13,10 @@ router.use(cors(corsOptions));
 /*
 //Estructura menues
 {
-  tipoMenu: "Snak", // Snak / Principal / Bebida
-  nombre:"Papas Lays 250g",
-  precio: 3,5,
-  imagen: "url imagen"
+  "tipoMenu": "Snak", // Snak / Principal / Bebida
+  "nombre":"Papas Lays 250g",
+  "precio": 3.5,
+  "imagen": "url imagen"
 }
 */
 
@@ -36,6 +36,17 @@ router.get('/:tipoMenu',function(req,res){
     .toArray((err, data) => {
         res.json(data);
     });
+});
+
+//3. Alta de un producto
+router.post('/nuevo',function(req,res){
+  console.log(req.body);
+  req.db.collection('productos')
+    .insert(req.body,function(e){
+        if (e)
+            console.log(e);
+    })
+    res.send("Se inserto correctamente");
 });
 
 module.exports = router;
