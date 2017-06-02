@@ -12,8 +12,9 @@ var router = express.Router({mergedparams : true});//
 router.use(cors(corsOptions));
 /*
 //Estructura menues
+//tipoMenu= Snack / Principal / Bebida
 {
-  "tipoMenu": "Snak", // Snak / Principal / Bebida
+  "tipoMenu": "Snack", 
   "nombre":"Papas Lays 250g",
   "precio": 3.5,
   "imagen": "url imagen"

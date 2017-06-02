@@ -18,7 +18,7 @@ router.use(cors(corsOptions));
             "nombre":"Papas Lays 250g",
             "precio": 3.5,
             "imagen": "url imagen"},
-          {"tipoMenu": "Snak", // Snak / Principal / Bebida
+          {"tipoMenu": "Snack", 
             "nombre":"Papas Lays 250g",
             "precio": 30.5,
             "imagen": "url imagen"},

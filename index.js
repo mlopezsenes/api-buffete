@@ -24,6 +24,7 @@ MongoClient.connect('mongodb://localhost:27017/buffete', function(err, db) {
         next();
     });
 
+	db.collection('pedidos').drop();
    db.collection('usuarios').drop();
    db.collection('usuarios').insert({
 																	   "nombre": "nombre",
