@@ -14,15 +14,15 @@ router.use(cors(corsOptions));
 //Estructura menues
 {
   "usuario": a@a.com,
-  "pedido": [{"tipoMenu": "Snack", 
+  "pedido": [{"tipoMenu": "Snack",
             "nombre":"Papas Lays 250g",
             "precio": 3.5,
             "imagen": "url imagen"},
-          {"tipoMenu": "Snack", 
+          {"tipoMenu": "Snack",
             "nombre":"Papas Lays 250g",
             "precio": 30.5,
             "imagen": "url imagen"},
-          {"tipoMenu": "Snak", 
+          {"tipoMenu": "Snak",
               "nombre":"Papas Lays 250g",
               "precio": 3.5,
               "imagen": "url imagen"}
@@ -33,32 +33,34 @@ router.use(cors(corsOptions));
 
 // método GET que devuelve todos los pedidos.
 router.get('/', function(req,res){
-	req.db.collection('pedidos')
+	/*req.db.collection('pedidos')
     .find()
     .toArray((err, data) => {
         res.json(data);
-    });
+    });*/
 });
 
 //b.  Devuelve todos los productos del tipo indicado.
 router.get('/:mail',function(req,res){
-	    req.db.collection('pedidos')
+	   /* req.db.collection('pedidos')
     .find({usuario:req.params.mail})
     .toArray((err, data) => {
       console.log(data);
         res.json(data);
-    });
+    });*/
 });
 
 //3. Alta de un pedido
 router.post('/nuevo',function(req,res){
   console.log(req.body);
+  /*
   req.db.collection('pedidos')
     .insert(req.body,function(e){
         if (e)
             console.log(e);
-    })
-    res.send("Se inserto correctamente");
+    })*/
+    res.json({"mensaje":"Se inserto correctamente"});
+
 });
 
 module.exports = router;

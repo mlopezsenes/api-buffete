@@ -1,5 +1,5 @@
 var MongoClient = require( 'mongodb' ).MongoClient;
-var ObjectID = require('mongodb').ObjectID;
+//var ObjectID = require('mongodb').ObjectID;
 var express = require('express');
 var app = express();
 var rutas = require('./rutas');
@@ -15,7 +15,7 @@ app.use(function(req,res,next){
 	next();
 });
 
-MongoClient.connect('mongodb://localhost:27017/buffete', function(err, db) {
+/*MongoClient.connect('mongodb://localhost:27017/buffete', function(err, db) {
   if (err)
         throw err;
     app.use((req, res, next) => {
@@ -80,10 +80,10 @@ MongoClient.connect('mongodb://localhost:27017/buffete', function(err, db) {
 																	 ]
 																	 );
 
-
+*/
 	app.use('/',rutas);
 	//como es async , lo hago aca
 	app.listen(3000,function(){
 		console.log('Servidor funcionando en el puerto 3000')
 	});
-});
+//});
