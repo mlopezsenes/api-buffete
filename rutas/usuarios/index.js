@@ -63,7 +63,7 @@ router.get('/:mail',function(req,res){
     });*/
       if (usuario.mail == req.params.mail){
         res.json(usuario);
-      } else { res.json('{"error":"no se ha encontrado usuario"}')}
+      } else { res.json({"error":"no se ha encontrado usuario"})}
     //}
 
 });
@@ -80,12 +80,12 @@ router.get('/:mail/:clave',function(req,res){
       var result = data[0];
         if (data.length != 0){*/
         if (req.params.mail == usuario.mail && sha1(req.params.clave) == usuario.clave) {
-          res.json('{"codigo": 200,"mensaje":"Validado"}');
+          res.json({"codigo": 200,"mensaje":"Validado"});
         } else {
-          res.json('{"codigo": 400,"mensaje":"mail o clave incorrectos"}')
+          res.json({"codigo": 400,"mensaje":"mail o clave incorrectos"})
         }/*
 
-        } else { res.json('{"codigo": 500,"mensaje":"mail o clave incorrectos."}')}
+        } else { res.json({"codigo": 500,"mensaje":"mail o clave incorrectos."})}
 
     });*/
 
@@ -107,7 +107,7 @@ router.delete('/',function(req,res){
     req.db.collection('usuarios')
     .remove({ _id: req.ObjectID(req.body._id)}, function (err, result) {
         res.send(
-            (err === null) ? {"msg": "Se eliminó correctamente"} : {"msg": err}
+            (err === null) ? {msg: "Se eliminó correctamente"} : {msg: err}
         );
     });
 });
