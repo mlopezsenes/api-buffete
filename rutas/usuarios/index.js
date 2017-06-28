@@ -35,7 +35,7 @@ router.post('/nuevo',function(req,res){
         if (e)
             console.log(e);
     })
-    res.send("Se inserto correctamente");
+    res.send({mensaje:"Se inserto correctamente"});
 });
 
 
@@ -69,12 +69,12 @@ router.get('/:mail/:clave',function(req,res){
       var result = data[0];
         if (data.length != 0){
           if (req.params.mail == result.mail && sha1(req.params.clave) == result.clave) {
-            res.json("{'codigo': 200,'mensaje':'Validado'}");  
+            res.json({codigo: 200,mensaje:'Validado'});  
           } else {
-            res.json("{'codigo': 400,'mensaje':'mail o clave incorrectos'}")
+            res.json({codigo: 400,mensaje:'mail o clave incorrectos'})
           }
 
-          } else { res.json("{'codigo': 500,'mensaje':'mail o clave incorrectos.'}")}
+          } else { res.json({codigo: 500,mensaje:'mail o clave incorrectos.'})}
         
     });
 });
